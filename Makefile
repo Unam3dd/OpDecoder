@@ -143,7 +143,7 @@ all: BANNER $(DIR_DIST)/$(NAME) $(DIR_DIST)/$(NAME_SHARED) $(eval SHELL:=/bin/zs
 .ONESHELL:
 BANNER:
 	@clear
-	@printf "$$banner" | lolcat
+	@printf "$$banner"
 	@printf "\n[\033[0;32m\xE2\x9C\x94\033[0m] Check C Files... at \033[32m$(shell date)\033[00m\n"
 	@if test -f $(DIR_DIST)/$(NAME)
 	@then

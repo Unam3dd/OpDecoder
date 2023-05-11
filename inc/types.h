@@ -1,13 +1,7 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-/////////////////////////////
-//
-//			BOOL
-//
-/////////////////////////////
-
-typedef enum bool_t bool_t;
+#include <stddef.h>
 
 /////////////////////////////
 //
@@ -78,7 +72,6 @@ typedef unsigned char*		char_ptr_t;
 /////////////////////////////
 
 typedef signed long long	i64_t;
-typedef signed long long	int64_t;
 
 typedef signed int			i32_t;
 typedef signed int			int32_t;
@@ -135,10 +128,10 @@ typedef unsigned long	uint256_t __attribute__((__vector_size__(32), __aligned__(
 //
 /////////////////////////////
 
-enum bool_t
+typedef enum bool_t
 {
 	FALSE,
 	TRUE
-};
+} bool_t;
 
 #endif
