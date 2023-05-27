@@ -73,14 +73,16 @@
 			size_t	size;\
 		};\
 		size_t capacity;\
-	} NAME = { (T*)malloc(sizeof(T) * SIZE), 0, .capacity = SIZE };BUFFER_INIT(NAME);
+	} NAME = { .data = (T*)malloc(sizeof(T) * SIZE), .len = 0, .capacity = SIZE };BUFFER_INIT(NAME);
 
 #define BUFFER_ZERO(buf) (memset(buf.data, 0, buf.capacity); buf.len = 0;)
+
 #define BUFFER_COPY(buf, bytes, size)\
 	({\
 		memcpy(buf.data, bytes, size));\
 		buf.size = size;\
 	})
+
 #define BUFFER_STRCPY(buf, string) (strncpy(buf.data, string, strlen(string)))
 #define BUFFER_CAPACITY(buf) (buf.capacity)
 #define BUFFER_FREE(buf)\

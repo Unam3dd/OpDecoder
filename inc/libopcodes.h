@@ -1,0 +1,12 @@
+#ifndef LIBOPCODES_H
+#define LIBOPCODES_H
+
+//////////////////////////////////
+//
+//	       INCLUDES
+//
+/////////////////////////////////
+
+#include "arch.h"
+
+#endif
