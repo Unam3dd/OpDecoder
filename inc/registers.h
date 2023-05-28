@@ -28,7 +28,7 @@ typedef enum regymm_t	regymm_t;
 typedef enum regzmm_t	regzmm_t;
 typedef enum regseg_t	regseg_t;
 typedef enum regcr_t	regcr_t;
-typedef enum regdbg_t	regdbt_t;
+typedef enum regdbg_t	regdbg_t;
 typedef enum reg_flags_t	reg_flags_t;
 
 typedef regmm_t			regmm64_t;
