@@ -388,6 +388,9 @@ struct reg_t
 
 #define RFPU_SIZE 0x8
 
+#define RXMM_SIZE 0x8
+#define RXMMREX_SIZE 0x10
+
 //////////////////////////////////
 //
 //	    REGISTERS LOOKUP TABLES
@@ -408,5 +411,10 @@ const reg_t		*get_r64rex(size_t *len);
 
 const reg_t		*get_rmm(size_t *len);
 const reg_t		*get_rmmrex(size_t *len);
+
+const reg_t		*get_rfpu(size_t *len);
+
+const reg_t		*get_rxmm(size_t *len);
+const reg_t		*get_rxmmrex(size_t *len);
 
 #endif
