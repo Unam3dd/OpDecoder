@@ -25,7 +25,7 @@ const reg_t	*get_rymm(size_t *len)
 	return (rymm);
 }
 
-const reg_t	*get_rxmmrex(size_t *len)
+const reg_t	*get_rymmrex(size_t *len)
 {
 	static const reg_t rymmrex[RYMMREX_SIZE] = {
 		{ REG_STR("YMM0"), R256_YMM0, YWORD, R256 | REX},

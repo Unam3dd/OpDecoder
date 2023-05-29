@@ -293,6 +293,7 @@ enum regseg_t
 // Control registers
 enum regcr_t
 {
+	INVALID = -1,
 	R16_CR0,
 	R16_CR2 = 2,
 	R16_CR3,
@@ -316,6 +317,7 @@ enum regdbg_t
 // Registers flags
 enum reg_flags_t
 {
+	FLAG_INVALID = -1,
 	R8 = 1 << 0,
 	R16 = 1 << 1,
 	R32 = 1 << 2,
@@ -330,11 +332,13 @@ enum reg_flags_t
 	RCR = 1 << 8,
 	RDBG = 1 << 9,
 	R80	= 1 << 10,
-	REX = 1 << 11
+	REX = 1 << 11,
+	RFPU = 1 << 12
 };
 
 enum reg_size_t
 {
+	SIZE_INVALID = -1,
 	BYTE 	= 1 << 0,
 	WORD 	= 1 << 1,
 	DWORD 	= 1 << 2,
@@ -394,6 +398,13 @@ struct reg_t
 #define RYMM_SIZE 0x8
 #define RYMMREX_SIZE 0x10
 
+#define RZMM_SIZE 0x8
+#define RZMMREX_SIZE 0x10
+
+#define RCR_SIZE 0x6
+#define RSEG_SIZE 0x6
+#define RDBG_SIZE 0x8
+
 //////////////////////////////////
 //
 //	    REGISTERS LOOKUP TABLES
@@ -422,5 +433,13 @@ const reg_t		*get_rxmmrex(size_t *len);
 
 const reg_t		*get_rymm(size_t *len);
 const reg_t		*get_rymmrex(size_t *len);
+
+const reg_t		*get_rzmm(size_t *len);
+const reg_t		*get_rzmmrex(size_t *len);
+
+const reg_t		*get_rcr(size_t *len);
+const reg_t		*get_rdbg(size_t *len);
+
+const reg_t		*get_rseg(size_t *len);
 
 #endif
