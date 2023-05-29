@@ -329,7 +329,8 @@ enum reg_flags_t
 	RSEG = 1 << 7,
 	RCR = 1 << 8,
 	RDBG = 1 << 9,
-	REX = 1 << 10
+	R80	= 1 << 10,
+	REX = 1 << 11
 };
 
 enum reg_size_t
@@ -384,6 +385,8 @@ struct reg_t
 
 #define RMM_SIZE 0x8
 #define RMMREX_SIZE 0x10
+
+#define RFPU_SIZE 0x8
 
 //////////////////////////////////
 //
