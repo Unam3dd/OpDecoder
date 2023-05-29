@@ -376,6 +376,9 @@ struct reg_t
 #define R16_SIZE 0x8
 #define R16REX_SIZE 0x10
 
+#define R32_SIZE 0x8
+#define R32REX_SIZE 0x10
+
 //////////////////////////////////
 //
 //	    REGISTERS LOOKUP TABLES
@@ -387,5 +390,8 @@ const reg_t		*get_r8rex(size_t *len);
 
 const reg_t		*get_r16(size_t *len);
 const reg_t		*get_r16rex(size_t *len);
+
+const reg_t		*get_r32(size_t *len);
+const reg_t		*get_r32rex(size_t *len);
 
 #endif
