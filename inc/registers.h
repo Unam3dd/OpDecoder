@@ -9,6 +9,15 @@
 
 #include "types.h"
 
+/////////////////////////////
+//
+//			MACROS
+//
+/////////////////////////////
+
+#define SIZE_BITS(b) (b << 3)
+#define SIZE_BYTES(b) (b >> 3)
+
 //////////////////////////////////
 //
 //	       TYPEDEFS
@@ -315,10 +324,10 @@ enum reg_flags_t
 
 struct reg_t
 {
-	reg_name_t	name;
-	reg_index_t	index;
-	reg_size_t	size;
-	reg_flags_t	flags;
+	reg_name_t	name;	// Register name
+	reg_index_t	index;	// Register index [0-7]
+	reg_size_t	size;	// Register size in bytes
+	reg_flags_t	flags;	// Register flags
 };
 
 #endif
