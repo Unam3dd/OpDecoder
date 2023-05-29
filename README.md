@@ -1,2 +1,2 @@
 # OpDecoder
-Opcode Decoder for x86/Arm writed in pure C
+Opcode Decoder for x86 writed in pure C
