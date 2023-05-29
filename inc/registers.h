@@ -8,6 +8,7 @@
 /////////////////////////////////
 
 #include "types.h"
+#include "arch.h"
 
 /////////////////////////////
 //
@@ -51,7 +52,9 @@ typedef regdbg_t		regdbg16_t;
 typedef unsigned char*	reg_name_t;
 typedef unsigned int	reg_index_t;
 
-typedef struct reg_t reg_t;
+typedef struct reg_t 		reg_t;
+typedef struct regs_x86_t	regs_x86_t;
+typedef struct regs_x64_t	regs_x64_t;
 
 //////////////////////////////////
 //
@@ -367,6 +370,51 @@ struct reg_t
 	reg_index_t	index;	// Register index [0-7]
 	reg_size_t	size;	// Register size in bytes
 	reg_flags_t	flags;	// Register flags
+};
+
+// Legacy mode x86 registers
+struct regs_x86_t
+{
+	union {
+		const reg_t	*rfpu;
+		const reg_t	*r80;
+	};
+	const reg_t	*r32;
+	const reg_t	*r16;
+	const reg_t	*rseg;
+	const reg_t	*rdbg;
+	const reg_t	*rcr;
+	const reg_t	*r8;
+};
+
+// REX Registers and x64 virtual long mode
+
+struct regs_x64_t
+{
+	union {
+		const reg_t	*rzmm;
+		const reg_t	*r512;
+	};
+	union {
+		const reg_t	*rymm;
+		const reg_t	*r256;
+	};
+	union {
+		const reg_t	*rxmm;
+		const reg_t	*r128;
+	};
+	union {
+		const reg_t	*rfpu;
+		const reg_t	*r80;
+	};
+	const reg_t	*rmm;
+	const reg_t	*r64;
+	const reg_t	*r32;
+	const reg_t	*r16;
+	const reg_t	*rseg;
+	const reg_t	*rdbg;
+	const reg_t	*rcr;
+	const reg_t	*r8;
 };
 
 //////////////////////////////////
