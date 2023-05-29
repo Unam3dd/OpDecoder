@@ -17,6 +17,7 @@
 
 #define SIZE_BITS(b) (b << 3)
 #define SIZE_BYTES(b) (b >> 3)
+#define REG_STR(str) ((unsigned char *)str)
 
 //////////////////////////////////
 //
@@ -24,21 +25,23 @@
 //
 /////////////////////////////////
 
-typedef enum reg8_t		reg8_t;
-typedef enum reg8rex_t	reg8rex_t;
-typedef enum reg16_t	reg16_t;
-typedef enum reg16rex_t	reg16rex_t;
-typedef enum reg32_t	reg32_t;
-typedef enum reg32rex_t	reg32rex_t;
-typedef enum reg64_t	reg64_t;
-typedef enum regmm_t	regmm_t;
-typedef enum regxmm_t	regxmm_t;
-typedef enum regymm_t	regymm_t;
-typedef enum regzmm_t	regzmm_t;
-typedef enum regseg_t	regseg_t;
-typedef enum regcr_t	regcr_t;
-typedef enum regdbg_t	regdbg_t;
+typedef enum reg8_t			reg8_t;
+typedef enum reg8rex_t		reg8rex_t;
+typedef enum reg16_t		reg16_t;
+typedef enum reg16rex_t		reg16rex_t;
+typedef enum reg32_t		reg32_t;
+typedef enum reg32rex_t		reg32rex_t;
+typedef enum reg64_t		reg64_t;
+typedef enum regmm_t		regmm_t;
+typedef enum regfpu_t		regfpu_t;
+typedef enum regxmm_t		regxmm_t;
+typedef enum regymm_t		regymm_t;
+typedef enum regzmm_t		regzmm_t;
+typedef enum regseg_t		regseg_t;
+typedef enum regcr_t		regcr_t;
+typedef enum regdbg_t		regdbg_t;
 typedef enum reg_flags_t	reg_flags_t;
+typedef enum reg_size_t		reg_size_t;
 
 typedef regmm_t			regmm64_t;
 typedef regxmm_t		regxmm128_t;
@@ -46,7 +49,6 @@ typedef regseg_t		regseg16_t;
 typedef regcr_t			regcr16_t;
 typedef regdbg_t		regdbg16_t;
 typedef unsigned char*	reg_name_t;
-typedef unsigned int	reg_size_t;
 typedef unsigned int	reg_index_t;
 
 typedef struct reg_t reg_t;
@@ -201,6 +203,19 @@ enum regmm_t
 	R64REX_MM7
 };
 
+// Floating point stack registers (FPU - Extension)
+enum regfpu_t
+{
+	R80_ST0,
+	R80_ST1,
+	R80_ST2,
+	R80_ST3,
+	R80_ST4,
+	R80_ST5,
+	R80_ST6,
+	R80_ST7
+};
+
 // 128 Bits registers (SIMD - SSE Extension)
 enum regxmm_t
 {
@@ -313,7 +328,26 @@ enum reg_flags_t
 	RZMM = 1 << 6,
 	RSEG = 1 << 7,
 	RCR = 1 << 8,
-	RDBG = 1 << 9
+	RDBG = 1 << 9,
+	REX = 1 << 10
+};
+
+enum reg_size_t
+{
+	BYTE 	= 1 << 0,
+	WORD 	= 1 << 1,
+	DWORD 	= 1 << 2,
+	FWORD 	= 0x30,
+	PWORD 	= 0x30,
+	QWORD 	= 1 << 3,
+	TBYTE 	= 0xA,
+	TWORD 	= 0xA,
+	DQWORD 	= 1 << 4,
+	XWORD 	= 1 << 4,
+	QQWORD	= 1 << 5,
+	YWORD	= 1 << 5,
+	DQQWORD	= 1 << 6,
+	ZWORD	= 1 << 6
 };
 
 //////////////////////////////////
@@ -329,5 +363,23 @@ struct reg_t
 	reg_size_t	size;	// Register size in bytes
 	reg_flags_t	flags;	// Register flags
 };
+
+//////////////////////////////////
+//
+//	       DEFINES
+//
+/////////////////////////////////
+
+#define R8_SIZE	0x8
+#define R8REX_SIZE 0x10
+
+//////////////////////////////////
+//
+//	    REGISTERS LOOKUP TABLES
+//
+/////////////////////////////////
+
+const reg_t		*get_r8(size_t *len);
+const reg_t		*get_r8rex(size_t *len);
 
 #endif

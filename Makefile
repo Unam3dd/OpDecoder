@@ -27,7 +27,7 @@ DIR_DIST = release
 ###################################
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -Iinc -fPIC -pedantic -m64
+CFLAGS = -Wall -Wextra -Werror -Iinc -fPIC -m64
 TEST_CFLAGS = -I. -Iinc
 VERSION = $(shell $(CC) --version | head -n1)
 
